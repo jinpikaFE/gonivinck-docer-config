@@ -1,10 +1,12 @@
 # gonivinck
+
 一个基于 `docker` 的 `go-zero` 本地开发运行环境。
 
-
 ## 使用
+
 ### 1. 按需修改 .env 配置
-~~~env
+
+```env
 # 设置时区
 TZ=Asia/Shanghai
 # 设置网络模式
@@ -80,20 +82,27 @@ JAEGER_PORT=5000
 DTM_HTTP_PORT=36789
 # DTM gRPC 协议端口号
 DTM_GRPC_PORT=36790
-~~~
+```
 
 ### 2.启动服务
+
 - 启动全部服务
+
 ```bash
 docker-compose up -d
 ```
+
 - 按需启动部分服务
+
 ```bash
 docker-compose up -d etcd golang mysql redis
+docker-compose up -d etcd mysql redis mysql-manage redis-manage etcd-manage prometheus grafana jaeger dtm
 ```
 
 ### 3.运行代码
+
 将项目代码放置 `CODE_PATH_HOST` 指定的本机目录，进入 `golang` 容器，运行项目代码。
-~~~bash
+
+```bash
 docker exec -it gonivinck_golang_1 bash
-~~~
+```
